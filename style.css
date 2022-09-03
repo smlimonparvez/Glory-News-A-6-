@@ -1,0 +1,21 @@
+@media only screen and (max-width: 576px) {
+    .responsive {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .sort-view {
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .two-button {
+        display: flex;
+        justify-content: center;
+    }
+
+    .sm-view-img {
+        width: 100vw;
+    }
+}

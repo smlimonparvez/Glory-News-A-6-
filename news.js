@@ -49,7 +49,7 @@ const displayNews = (allNews) => {
         <div class="card mb-3 mx-5">
         <div class="row g-0">
             <div class="col-md-4 col-sm-12">
-                <img src="${news.thumbnail_url}" class="img-fluid rounded-start" alt="...">
+                <img src="${news.thumbnail_url}" class="img-fluid rounded-start sm-view-img" alt="...">
             </div>
             <div class="col-md-8">
                 <div class="card-body">
@@ -132,10 +132,10 @@ const displayNewsDetails = (newsDetails) => {
 //************************************************* */ Toggle spinner *******************************************//
 const toggleSpinner = isLoading => {
     const loderSection = document.getElementById('loader');
-    if(isLoading){
+    if (isLoading) {
         loderSection.classList.remove('d-none');
     }
-    else{
+    else {
         loderSection.classList.add('d-none');
     }
 }
