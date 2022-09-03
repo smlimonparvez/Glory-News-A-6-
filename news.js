@@ -1,4 +1,4 @@
-//************************************************ */ Dynamic Nav *******************************//
+//*************************************************/ Dynamic Nav *******************************//
 const loadCategories = async () => {
     const url = `https://openapi.programming-hero.com/api/news/categories`;
     try {
@@ -101,27 +101,30 @@ const loadNewsDetails = async (news_id) => {
 }
 
 const displayNewsDetails = (newsDetails) => {
-    console.log(newsDetails);
+    // console.log(newsDetails);
     const newsDetailsModal = document.getElementById('news-details');
-    // const newsDiv = document.createElement('div')
-
     newsDetailsModal.innerHTML = `
     <div>
-    <img src="${newsDetails.image_url}" class ="img-fluid">
+     <img src="${newsDetails.image_url}" class="img-fluid">
     </div>
-    <div>
-    <h5>${newsDetails.title}</h5>
-    <P>${newsDetails.details}</p>
+    <div class ="p-3">
+     <h5>${newsDetails.title}</h5>
+     <P style ="text-align: justify; text-justify: inter-word;">${newsDetails.details}</p>
     </div>
-    <div class="d-flex align-items-center justify-content-around">
-    <img src="${newsDetails.author.img}" alt="">
-    <div>
-        <h6>${newsDetails.author.name}</h6>
+    <div class ="d-flex align-items-center justify-content-between">
+     <div class="d-flex align-items-center ps-3">
+        <img src="${newsDetails.author.img}" alt="" class="rounded-circle" style="height: 30px; width: 30px;">
+       <div class="ps-2 pt-3">
+        <h6 class ="m-0">${newsDetails.author.name}</h6>
         <p>${newsDetails.author.published_date}</p>
-    </div>
+       </div>
+     </div>
+      <div class="d-flex align-items-center pe-3">
+       <i class="fa-regular fa-eye"></i>
+       <p class="fw-bold m-0 ps-1">${newsDetails.total_view}</p>
+       </div>
     </div>
     `;
-    // newsDetailsModal.appendChild(newsDiv);
 }
 
 loadCategories();
