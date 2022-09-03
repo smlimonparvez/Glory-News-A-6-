@@ -54,26 +54,26 @@ const displayNews = (allNews) => {
             <div class="col-md-8">
                 <div class="card-body">
                     <h5 class="card-title">${news.title}</h5>
-                    <p class="card-text">${news.details.slice(0, 500)}</p>
-                    <div class="d-flex justify-content-around align-items-center">
-                        <div class="d-flex align-items-center justify-content-around">
-                            <img src="${news.author.img}" class="img-fluid rounded-circle" style="width:30px; height:30px;" alt="">
-                            <div class="ps-2 pt-3">
-                                <h6 class="m-0">${news.author.name ? news.author.name : "No name found"}</h6>
-                                <p>${news.author.published_date ? news.author.published_date : "No date found"}</p>
-                            </div>
-                        </div>
-                        <div class="d-flex align-items-center">
-                            <i class="fa-regular fa-eye"></i>
-                            <p class="fw-bold m-0 ps-1">${news.total_view ? news.total_view : "No views"}</p>
-                        </div>
-                        <div class="">
-                            <i class="fa-sharp fa-solid fa-star" style="color: gray;"></i>
-                            <i class="fa-sharp fa-solid fa-star" style="color: gray;"></i>
-                            <i class="fa-sharp fa-solid fa-star" style="color: gray;"></i>
-                            <i class="fa-sharp fa-solid fa-star" style="color: gray;"></i>
-                            <i class="fa-regular fa-star-half-stroke" style="color: gray;"></i>
-                        </div>
+                    <p class="card-text ellipsis">${news.details}</p>
+                    <div class="d-flex justify-content-around align-items-center mobile-view">
+                    <div class="d-flex align-items-center justify-content-around">
+                    <img src="${news.author.img}" class="img-fluid rounded-circle" style="width:30px; height:30px;" alt="">
+                    <div class="ps-2 pt-3">
+                        <h6 class="m-0">${news.author.name ? news.author.name : "No name found"}</h6>
+                        <p>${news.author.published_date ? news.author.published_date : "No date found"}</p>
+                    </div>
+                </div>
+                <div class="d-flex align-items-center">
+                    <i class="fa-regular fa-eye"></i>
+                    <p class="fw-semibold m-0 ps-1">${news.total_view ? news.total_view : "No views"}</p>
+                </div>
+                <div class="none">
+                    <i class="fa-sharp fa-solid fa-star" style="color: gray;"></i>
+                    <i class="fa-sharp fa-solid fa-star" style="color: gray;"></i>
+                    <i class="fa-sharp fa-solid fa-star" style="color: gray;"></i>
+                    <i class="fa-sharp fa-solid fa-star" style="color: gray;"></i>
+                    <i class="fa-regular fa-star-half-stroke" style="color: gray;"></i>
+                </div>
                         <div>
                             <button type="button" onclick="loadNewsDetails('${news._id}')" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Show Details</button>
                         </div>
