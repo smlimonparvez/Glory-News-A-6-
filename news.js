@@ -74,7 +74,7 @@ const displayNews = (allNews) => {
                             <i class="fa-regular fa-star-half-stroke" style="color: gray;"></i>
                         </div>
                         <div>
-                            <button type="button" onclick="loadNewsDetails(${news._id})" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newsDetails ">Show Details</button>
+                            <button type="button" onclick="loadNewsDetails('${news._id}')" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Show Details</button>
                         </div>
                     </div>
                 </div>
@@ -89,21 +89,39 @@ const displayNews = (allNews) => {
 //****************************************** News Modal *****************************************//
 const loadNewsDetails = async (news_id) => {
     const url = `https://openapi.programming-hero.com/api/news/${news_id}`;
-    try{
+    try {
         fetch(url);
         const res = await fetch(url);
         const data = await res.json();
-        console.log(data.data);
+        displayNewsDetails(data.data[0]);
     }
-    catch(error){
+    catch (error) {
         console.log(error);
     }
 }
 
 const displayNewsDetails = (newsDetails) => {
-console.log(newsDetails);
-const newsDetailsModal = document.getElementById('new-details');
+    console.log(newsDetails);
+    const newsDetailsModal = document.getElementById('news-details');
+    // const newsDiv = document.createElement('div')
 
+    newsDetailsModal.innerHTML = `
+    <div>
+    <img src="${newsDetails.image_url}" class ="img-fluid">
+    </div>
+    <div>
+    <h5>${newsDetails.title}</h5>
+    <P>${newsDetails.details}</p>
+    </div>
+    <div class="d-flex align-items-center justify-content-around">
+    <img src="${newsDetails.author.img}" alt="">
+    <div>
+        <h6>${newsDetails.author.name}</h6>
+        <p>${newsDetails.author.published_date}</p>
+    </div>
+    </div>
+    `;
+    // newsDetailsModal.appendChild(newsDiv);
 }
 
 loadCategories();

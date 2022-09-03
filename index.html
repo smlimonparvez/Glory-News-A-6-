@@ -87,56 +87,43 @@
         </section>
         <!------------------------------------------------------ Modal ----------------------------------------------------->
         <section>
-            <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newsDetails">
+            <!-- Button trigger modal -->
+            <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 Launch demo modal
             </button> -->
+
             <!-- Modal -->
-            <div class="modal fade" id="newsDetails" tabindex="-1" aria-labelledby="newsDetailsLabel"
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
-                <div class="modal-dialog modal-lg">
+                <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="newsDetailsLabel">News Details</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">News Details</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <div class="modal-body" style="height: 520px;">
+                        <div id="news-details" class="modal-body">
                             <div>
-                                <div class="">
-                                    <img src="${news.thumbnail_url}" class="img-fluid rounded-start" alt="...">
-                                </div>
-                                <h5 class="card-title">${news.title}</h5>
-                                <p class="card-text">${news.details.slice(0, 500)}</p>
-                                <div class="d-flex justify-content-around align-items-center">
-                                    <div class="d-flex align-items-center justify-content-around">
-                                        <img src="${news.author.img}" class="img-fluid rounded-circle"
-                                            style="width:30px; height:30px;" alt="">
-                                        <div class="ps-2 pt-3">
-                                            <h6 class="m-0">${news.author.name ? news.author.name : "No name found"}
-                                            </h6>
-                                            <p>${news.author.published_date ? news.author.published_date : "No date
-                                                found"}</p>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex align-items-center">
-                                        <i class="fa-regular fa-eye"></i>
-                                        <p class="fw-bold m-0 ps-1">${news.total_view ? news.total_view : "No views"}
-                                        </p>
-                                    </div>
-                                    <div class="">
-                                        <i class="fa-sharp fa-solid fa-star" style="color: gray;"></i>
-                                        <i class="fa-sharp fa-solid fa-star" style="color: gray;"></i>
-                                        <i class="fa-sharp fa-solid fa-star" style="color: gray;"></i>
-                                        <i class="fa-sharp fa-solid fa-star" style="color: gray;"></i>
-                                        <i class="fa-regular fa-star-half-stroke" style="color: gray;"></i>
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <img src="${newsDetails.image_url}" class="img-fluid">
+                            </div>
+                            <div>
+                                <h5>${newsDetails.title}</h5>
+                                <P>${newsDetails.details}</p>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-around">
+                                <img src="${newsDetails.author.img}" alt="">
+                                <div>
+                                    <h6>${newsDetails.author.name}</h6>
+                                    <p>${newsDetails.author.published_date}</p>
                                 </div>
                             </div>
                         </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+                        </div>
                     </div>
                 </div>
+            </div>
         </section>
     </main>
     <!--------------------------------------------------------- Footer --------------------------------------------------------->
