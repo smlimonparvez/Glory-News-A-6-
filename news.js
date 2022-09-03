@@ -115,13 +115,13 @@ const displayNewsDetails = (newsDetails) => {
      <div class="d-flex align-items-center ps-3">
         <img src="${newsDetails.author.img}" alt="" class="rounded-circle" style="height: 30px; width: 30px;">
        <div class="ps-2 pt-3">
-        <h6 class ="m-0">${newsDetails.author.name}</h6>
-        <p>${newsDetails.author.published_date}</p>
+        <h6 class ="m-0">${newsDetails.author.name ? newsDetails.author.name : "No name found"}</h6>
+        <p>${newsDetails.author.published_date ? newsDetails.author.published_date : "No date found"}</p>
        </div>
      </div>
       <div class="d-flex align-items-center pe-3">
        <i class="fa-regular fa-eye"></i>
-       <p class="fw-bold m-0 ps-1">${newsDetails.total_view}</p>
+       <p class="fw-bold m-0 ps-1">${newsDetails.total_view ? newsDetails.total_view : "No view"}</p>
        </div>
     </div>
     `;
