@@ -18,14 +18,14 @@ const displayCategories = (categories) => {
         const categoryItem = document.createElement('li');
         categoryItem.classList.add('nav-item');
         categoryItem.innerHTML = `
-        <a class="nav-link fw-bold p-2 ms-4" onclick= "loadNews(${category.category_id})" href="#">${category.category_name}</a>
+        <a class="nav-link fw-bold p-2 ms-4" onclick= "loadNews('${category.category_id}')" href="#">${category.category_name}</a>
         `;
         newsCatagories.appendChild(categoryItem);
     });
 }
 
-const loadNews = async (id) => {
-    const url = ` https://openapi.programming-hero.com/api/news/category/${id}`;
+const loadNews = async (category_id) => {
+    const url = ` https://openapi.programming-hero.com/api/news/category/${category_id}`;
     try {
         fetch(url);
         const res = await fetch(url);
@@ -39,6 +39,7 @@ const loadNews = async (id) => {
 
 const displayNews = (allNews) => {
     const allNewsItem = document.getElementById('all-news-item');
+    allNewsItem.innerHTML = '';
     allNews.forEach(news => {
         const newsDiv = document.createElement('div');
         newsDiv.innerHTML = `
@@ -56,12 +57,12 @@ const displayNews = (allNews) => {
                             <img src="${news.author.img}" class="img-fluid rounded-circle" style="width:30px; height:30px;" alt="">
                             <div class="ps-2 pt-3">
                                 <h6 class="m-0">${news.author.name ? news.author.name : "No name found"}</h6>
-                                <p>${news.author.published_date}</p>
+                                <p>${news.author.published_date ? news.author.published_date : "No date found"}</p>
                             </div>
                         </div>
                         <div class="d-flex align-items-center">
                             <i class="fa-regular fa-eye"></i>
-                            <p class="fw-bold m-0 ps-1">${news.total_view}</p>
+                            <p class="fw-bold m-0 ps-1">${news.total_view ? news.total_view : "No views"}</p>
                         </div>
                         <div class="">
                             <i class="fa-sharp fa-solid fa-star" style="color: gray;"></i>
