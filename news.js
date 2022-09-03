@@ -1,3 +1,4 @@
+//************************************************ */ Dynamic Nav *******************************//
 const loadCategories = async () => {
     const url = `https://openapi.programming-hero.com/api/news/categories`;
     try {
@@ -24,6 +25,7 @@ const displayCategories = (categories) => {
     });
 }
 
+//******************************************/ Dynamic News ***********************************************//
 const loadNews = async (category_id) => {
     const url = ` https://openapi.programming-hero.com/api/news/category/${category_id}`;
     try {
@@ -72,7 +74,7 @@ const displayNews = (allNews) => {
                             <i class="fa-regular fa-star-half-stroke" style="color: gray;"></i>
                         </div>
                         <div>
-                            <button id="show-details" class="btn btn-primary">Show Details</button>
+                            <button type="button" onclick="loadNewsDetails(${news._id})" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newsDetails ">Show Details</button>
                         </div>
                     </div>
                 </div>
@@ -82,6 +84,26 @@ const displayNews = (allNews) => {
         `;
         allNewsItem.appendChild(newsDiv);
     });
+}
+
+//****************************************** News Modal *****************************************//
+const loadNewsDetails = async (news_id) => {
+    const url = `https://openapi.programming-hero.com/api/news/${news_id}`;
+    try{
+        fetch(url);
+        const res = await fetch(url);
+        const data = await res.json();
+        console.log(data.data);
+    }
+    catch(error){
+        console.log(error);
+    }
+}
+
+const displayNewsDetails = (newsDetails) => {
+console.log(newsDetails);
+const newsDetailsModal = document.getElementById('new-details');
+
 }
 
 loadCategories();
