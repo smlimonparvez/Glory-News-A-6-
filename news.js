@@ -27,6 +27,7 @@ const displayCategories = (categories) => {
 
 //******************************************/ Dynamic News ***********************************************//
 const loadNews = async (category_id) => {
+    toggleSpinner(true);
     const url = ` https://openapi.programming-hero.com/api/news/category/${category_id}`;
     try {
         fetch(url);
@@ -84,6 +85,7 @@ const displayNews = (allNews) => {
         `;
         allNewsItem.appendChild(newsDiv);
     });
+    toggleSpinner(false);
 }
 
 //****************************************** News Modal *****************************************//
@@ -125,6 +127,17 @@ const displayNewsDetails = (newsDetails) => {
        </div>
     </div>
     `;
+}
+
+//************************************************* */ Toggle spinner *******************************************//
+const toggleSpinner = isLoading => {
+    const loderSection = document.getElementById('loader');
+    if(isLoading){
+        loderSection.classList.remove('d-none');
+    }
+    else{
+        loderSection.classList.add('d-none');
+    }
 }
 
 loadCategories();
