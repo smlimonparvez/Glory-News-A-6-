@@ -151,7 +151,7 @@ const displayNewsDetails = (newsDetails) => {
     `;
 }
 
-//************************************************* */ Toggle spinner *******************************************//
+//*************************************************** Toggle spinner *******************************************//
 const toggleSpinner = isLoading => {
     const loderSection = document.getElementById('loader');
     if (isLoading) {
