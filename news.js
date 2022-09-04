@@ -40,7 +40,13 @@ const loadNews = async (category_id) => {
     }
 }
 
+
 const displayNews = (allNews) => {
+    // console.log(allNews);
+    // const inputField = document.getElementById('input-field');
+    allNews.sort((a,b) => {
+        return b.total_view-a.total_view;
+    })
     const allNewsItem = document.getElementById('all-news-item');
     allNewsItem.innerHTML = '';
     allNews.forEach(news => {
