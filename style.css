@@ -73,3 +73,8 @@
 .ellipsis:hover {
     overflow: visible;
 }
+
+.answer{
+    text-align: justify;
+    text-justify: inter-word;
+}

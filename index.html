@@ -13,6 +13,7 @@
     <script src="https://kit.fontawesome.com/f7067e181f.js" crossorigin="anonymous"></script>
     <!--------------------------------------------- CSS -------------------------------------------->
     <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
 </head>
 
 <body class="bg-light">
@@ -36,10 +37,10 @@
                                 <a class="nav-link fw-semibold" href="#">News</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link fw-semibold" href="blogs.html">Blogs</a>
+                                <a class="nav-link fw-semibold" href="blog.html">Blog</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link fw-semibold" href="blogs.html"><i
+                                <a class="nav-link fw-semibold" href="blog.html"><i
                                         class="fa-solid fa-right-to-bracket"></i></a>
                             </li>
                         </ul>
@@ -73,13 +74,13 @@
             <div class="d-flex justify-content-between responsive">
                 <div class="d-flex align-items-center sort-view">
                     <p class="mb-0">Sort by view:</p>
-                    <input type="search" class="ms-2" placeholder="Default"> 
+                    <input type="search" class="ms-2" placeholder="Default">
                 </div>
                 <div class="d-flex two-button">
                     <button type="button" class="btn btn-primary">Todays Pick</button>
                     <button type="button" class="btn btn-light ms-2 border border-primary">Trending</button>
                 </div>
-            </div>            
+            </div>
         </section>
         <!-------------------------------------------------- Load snipper ----------------------------------------->
         <section id="loader" class="d-none">
@@ -87,6 +88,12 @@
                 <div class="spinner-border  text-success" role="status">
                     <span class="visually-hidden">Loading...</span>
                 </div>
+            </div>
+        </section>
+        <!------------------------------------------------ No news found section --------------------------------------------->
+        <section id="no-news-found" class="d-none">
+            <div style="height: 200px;" class="d-flex justify-content-center align-items-center">
+                <p class="fs-3 fw-semibold text-danger">No news found here</p>
             </div>
         </section>
         <!----------------------------------------------- News section ------------------------------------------------------->
@@ -106,7 +113,7 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div id="news-details" class="modal-body">
-                        
+
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

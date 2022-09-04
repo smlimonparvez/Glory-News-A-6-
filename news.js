@@ -42,11 +42,27 @@ const loadNews = async (category_id) => {
 
 
 const displayNews = (allNews) => {
-    // console.log(allNews);
-    // const inputField = document.getElementById('input-field');
-    allNews.sort((a,b) => {
-        return b.total_view-a.total_view;
+
+    //******************************************/ Input field item ***************************************//
+    const inputField = document.getElementById('input-field');
+    const length = allNews.length;
+    inputField.value = length + ' Items found';
+
+    //*********************************************** No news Found **************************************//
+    const noNewsFound = document.getElementById('no-news-found');
+    if(allNews.length === 0){
+        noNewsFound.classList.remove('d-none');
+    }
+    else{
+        noNewsFound.classList.add('d-none');
+    }
+
+    //**************************************/ Rearrange most viewed news ***********************************//
+    allNews.sort((a, b) => {
+        return b.total_view - a.total_view;
     })
+
+    //********************************************* News item ********************************************//
     const allNewsItem = document.getElementById('all-news-item');
     allNewsItem.innerHTML = '';
     allNews.forEach(news => {
