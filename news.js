@@ -26,108 +26,108 @@ const displayCategories = (categories) => {
 }
 
 //******************************************/ Dynamic News ***********************************************//
-const loadNews = async (category_id) => {
-    toggleSpinner(true);
-    const url = ` https://openapi.programming-hero.com/api/news/category/${category_id}`;
-    try {
-        fetch(url);
-        const res = await fetch(url);
-        const data = await res.json();
-        displayNews(data.data);
-    }
-    catch (error) {
-        console.log(error);
-    }
-}
-
-
-const displayNews = (allNews) => {
-
-    //******************************************/ Input field item ***************************************//
-    const inputField = document.getElementById('input-field');
-    const length = allNews.length;
-    inputField.value = length + ' Items found';
-
-    //*********************************************** No news Found **************************************//
-    const noNewsFound = document.getElementById('no-news-found');
-    if(allNews.length === 0){
-        noNewsFound.classList.remove('d-none');
-    }
-    else{
-        noNewsFound.classList.add('d-none');
+    const loadNews = async (category_id) => {
+        toggleSpinner(true);
+        const url = ` https://openapi.programming-hero.com/api/news/category/${category_id}`;
+        try {
+            fetch(url);
+            const res = await fetch(url);
+            const data = await res.json();
+            displayNews(data.data);
+        }
+        catch (error) {
+            console.log(error);
+        }
     }
 
-    //**************************************/ Rearrange most viewed news ***********************************//
-    allNews.sort((a, b) => {
-        return b.total_view - a.total_view;
-    })
 
-    //********************************************* News item ********************************************//
-    const allNewsItem = document.getElementById('all-news-item');
-    allNewsItem.innerHTML = '';
-    allNews.forEach(news => {
-        const newsDiv = document.createElement('div');
-        newsDiv.innerHTML = `
-        <div class="card mb-3 mx-5">
-        <div class="row g-0">
-            <div class="col-md-4 col-sm-12">
-                <img src="${news.thumbnail_url}" class="img-fluid rounded-start sm-view-img" alt="...">
-            </div>
-            <div class="col-md-8">
-                <div class="card-body">
-                    <h5 class="card-title">${news.title}</h5>
-                    <p class="card-text ellipsis">${news.details}</p>
-                    <div class="d-flex justify-content-around align-items-center mobile-view">
-                    <div class="d-flex align-items-center justify-content-around">
-                    <img src="${news.author.img}" class="img-fluid rounded-circle" style="width:30px; height:30px;" alt="">
-                    <div class="ps-2 pt-3">
-                        <h6 class="m-0">${news.author.name ? news.author.name : "No name found"}</h6>
-                        <p>${news.author.published_date ? news.author.published_date : "No date found"}</p>
+    const displayNews = (allNews) => {
+
+        //******************************************/ Input field item ***************************************//
+        const inputField = document.getElementById('input-field');
+        const length = allNews.length;
+        inputField.value = length + ' Items found ';
+
+        //*********************************************** No news Found **************************************//
+        const noNewsFound = document.getElementById('no-news-found');
+        if (allNews.length === 0) {
+            noNewsFound.classList.remove('d-none');
+        }
+        else {
+            noNewsFound.classList.add('d-none');
+        }
+
+        //**************************************/ Rearrange most viewed news ***********************************//
+        allNews.sort((a, b) => {
+            return b.total_view - a.total_view;
+        })
+
+        //********************************************* News item ********************************************//
+        const allNewsItem = document.getElementById('all-news-item');
+        allNewsItem.innerHTML = '';
+        allNews.forEach(news => {
+            const newsDiv = document.createElement('div');
+            newsDiv.innerHTML = `
+            <div class="card mb-3 mx-5">
+            <div class="row g-0">
+                <div class="col-md-4 col-sm-12">
+                    <img src="${news.thumbnail_url}" class="img-fluid rounded-start sm-view-img" alt="...">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">${news.title}</h5>
+                        <p class="card-text ellipsis">${news.details}</p>
+                        <div class="d-flex justify-content-around align-items-center mobile-view">
+                        <div class="d-flex align-items-center justify-content-around">
+                        <img src="${news.author.img}" class="img-fluid rounded-circle" style="width:30px; height:30px;" alt="">
+                        <div class="ps-2 pt-3">
+                            <h6 class="m-0">${news.author.name ? news.author.name : "No name found"}</h6>
+                            <p>${news.author.published_date ? news.author.published_date : "No date found"}</p>
+                        </div>
                     </div>
-                </div>
-                <div class="d-flex align-items-center">
-                    <i class="fa-regular fa-eye"></i>
-                    <p class="fw-semibold m-0 ps-1">${news.total_view ? news.total_view : "No views"}</p>
-                </div>
-                <div class="none">
-                    <i class="fa-sharp fa-solid fa-star" style="color: gray;"></i>
-                    <i class="fa-sharp fa-solid fa-star" style="color: gray;"></i>
-                    <i class="fa-sharp fa-solid fa-star" style="color: gray;"></i>
-                    <i class="fa-sharp fa-solid fa-star" style="color: gray;"></i>
-                    <i class="fa-regular fa-star-half-stroke" style="color: gray;"></i>
-                </div>
-                        <div>
-                            <button type="button" onclick="loadNewsDetails('${news._id}')" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Show Details</button>
+                    <div class="d-flex align-items-center">
+                        <i class="fa-regular fa-eye"></i>
+                        <p class="fw-semibold m-0 ps-1">${news.total_view ? news.total_view : "No views"}</p>
+                    </div>
+                    <div class="none">
+                        <i class="fa-sharp fa-solid fa-star" style="color: gray;"></i>
+                        <i class="fa-sharp fa-solid fa-star" style="color: gray;"></i>
+                        <i class="fa-sharp fa-solid fa-star" style="color: gray;"></i>
+                        <i class="fa-sharp fa-solid fa-star" style="color: gray;"></i>
+                        <i class="fa-regular fa-star-half-stroke" style="color: gray;"></i>
+                    </div>
+                            <div>
+                                <button type="button" onclick="loadNewsDetails('${news._id}')" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Show Details</button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-        `;
-        allNewsItem.appendChild(newsDiv);
-    });
-    toggleSpinner(false);
-}
-
-//****************************************** News Modal *****************************************//
-const loadNewsDetails = async (news_id) => {
-    const url = `https://openapi.programming-hero.com/api/news/${news_id}`;
-    try {
-        fetch(url);
-        const res = await fetch(url);
-        const data = await res.json();
-        displayNewsDetails(data.data[0]);
+            `;
+            allNewsItem.appendChild(newsDiv);
+        });
+        toggleSpinner(false);
     }
-    catch (error) {
-        console.log(error);
-    }
-}
 
-const displayNewsDetails = (newsDetails) => {
-    // console.log(newsDetails);
-    const newsDetailsModal = document.getElementById('news-details');
-    newsDetailsModal.innerHTML = `
+    //****************************************** News Modal *****************************************//
+    const loadNewsDetails = async (news_id) => {
+        const url = `https://openapi.programming-hero.com/api/news/${news_id}`;
+        try {
+            fetch(url);
+            const res = await fetch(url);
+            const data = await res.json();
+            displayNewsDetails(data.data[0]);
+        }
+        catch (error) {
+            console.log(error);
+        }
+    }
+
+    const displayNewsDetails = (newsDetails) => {
+        // console.log(newsDetails);
+        const newsDetailsModal = document.getElementById('news-details');
+        newsDetailsModal.innerHTML = `
     <div>
      <img src="${newsDetails.image_url}" class="img-fluid">
     </div>
@@ -149,17 +149,19 @@ const displayNewsDetails = (newsDetails) => {
        </div>
     </div>
     `;
-}
-
-//*************************************************** Toggle spinner *******************************************//
-const toggleSpinner = isLoading => {
-    const loderSection = document.getElementById('loader');
-    if (isLoading) {
-        loderSection.classList.remove('d-none');
     }
-    else {
-        loderSection.classList.add('d-none');
-    }
-}
 
-loadCategories();
+    //*************************************************** Toggle spinner *******************************************//
+    const toggleSpinner = isLoading => {
+        const loderSection = document.getElementById('loader');
+        if (isLoading) {
+            loderSection.classList.remove('d-none');
+        }
+        else {
+            loderSection.classList.add('d-none');
+        }
+    }
+
+    loadCategories();
+    loadNews('08');
+
